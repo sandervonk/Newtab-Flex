@@ -137,9 +137,14 @@ div.flex-parent > .flex-box {
 
 .flex-box.spotify {
   padding: 0.5rem !important;
+  /*
   max-width: 30rem;
   min-width: 7rem;
+  */
   height: 12rem !important;
+  flex-basis: 15rem !important;
+  flex-grow: 0 !important;
+  flex-shrink: 10 !important;
 }
 .flex-box.spotify > iframe {
   height: 100% !important;

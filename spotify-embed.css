@@ -1,0 +1,15 @@
+#main > div > div > div > div > div > div {
+  border-bottom-right-radius: 1.7rem !important;
+}
+#main > div > div > div.ah.df.dg.dh > div > table > tbody > tr {
+  border-radius: 25px !important;
+}
+#main > div > div > div.ai.au.ah.av,
+#main > div > div > div.ah.df.dg.dh {
+  background: #434343 !important;
+}
+#main > div > div > div.ah.df.dg.dh > div::-webkit-scrollbar,
+#main > div > div > div.ah.df.dg.dh > div::-webkit-scrollbar-thumb,
+#main > div > div > div.ah.df.dg.dh > div::-webkit-scrollbar-track {
+  width: 0px !important;
+}
