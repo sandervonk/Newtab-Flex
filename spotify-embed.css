@@ -13,3 +13,6 @@
 #main > div > div > div.ah.df.dg.dh > div::-webkit-scrollbar-track {
   width: 0px !important;
 }
+[title="play"] path {
+  color: lightblue;
+}
