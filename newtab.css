@@ -228,8 +228,158 @@ div.flex-parent > .flex-box {
   height: 30rem !important;
   flex-basis: 40rem !important;
   flex-grow: 1 !important;
+  padding: 0px !important;
 }
 .flex-box.simplify-aeries .break {
   flex-basis: 100%;
   height: 0;
+}
+.simplify-title {
+  background: #1c4587;
+  text-align: center !important;
+}
+.simplify-aeries,
+.simplify-aeries > div {
+  flex-flow: nowrap !important;
+  flex-basis: 20rem !important;
+  text-align: center;
+  flex-grow: 1 !important;
+}
+.simplify-aeries {
+  display: flex !important;
+}
+.simplify-aeries.quick-check {
+  flex-basis: 20rem;
+  border-right: lightgrey 0.1rem solid;
+}
+.simplify-aeries.schedule > .simplify-title,
+.simplify-aeries.schedule {
+  border-top-right-radius: 1.7rem;
+}
+.simplify-aeries.schedule {
+  border-bottom-right-radius: 1.7rem;
+}
+.simplify-aeries.quick-check {
+  border-bottom-left-radius: 1.7rem;
+}
+.simplify-aeries.quick-check > .simplify-title,
+.simplify-aeries.quick-check {
+  border-top-left-radius: 1.7rem;
+  text-align: center !important;
+}
+.simplify-aeries > div {
+  height: 100%;
+}
+.simplify-title {
+  position: relative !important;
+  left: 50%;
+  top: 2rem;
+  transform: translate(-50%, -50%);
+  width: 100% !important;
+  display: block !important;
+  line-height: 4rem !important;
+  height: 4rem !important;
+  font-size: 1.4rem;
+}
+.simplify.list {
+  position: relative;
+  margin: 0.5rem;
+  background: #555 !important;
+  height: 25rem;
+}
+.schedule .simplify.list {
+  border-bottom-right-radius: 1.3rem !important;
+}
+.quick-check .simplify.list {
+  border-bottom-left-radius: 1.3rem !important;
+}
+.flex-parent > .flex-parent {
+  flex-flow: column !important;
+  display: flex !important;
+  flex-basis: 30rem;
+}
+.flex-parent > .flex-parent > div {
+  flex-basis: 100%;
+}
+.flex-box.tech-stories {
+  padding: 0px !important;
+  display: block !important;
+  padding-top: 1rem !important;
+  flex-basis: 30rem;
+  flex-grow: 2 !important;
+}
+.tech-stories > .tech-story {
+  border-bottom: solid lightgrey 0.1rem;
+  display: block !important;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.5rem;
+  text-align: left;
+  padding: 1rem;
+  height: 3rem;
+  line-height: 3rem;
+}
+.tech-stories.stories {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.tech-stories > .tech-story:last-of-type {
+  border-bottom: none !important;
+  margin-bottom: unset !important;
+}
+@media (max-width: 40rem) {
+  .flex-box.weather {
+    max-width: unset !important;
+    flex-grow: 1 !important;
+    display: inline-flex;
+  }
+  .flex-box.weather .weather-info {
+    display: inline-block !important;
+  }
+  .simplify-title {
+    font-size: 1.2rem !important;
+  }
+}
+.weather-info {
+  height: 100%;
+  border-left: lightgrey solid 0.1rem;
+  padding-left: 1rem;
+  margin-left: 1rem;
+  text-align: left !important;
+}
+.vertical-center {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.weather-info > .vertical-center > div {
+  padding: 0.4rem 0rem;
+}
+.weather-info .location::before {
+  content: "Location: ";
+}
+.weather-info .high-temp::before {
+  content: "High: ";
+}
+.weather-info .low-temp::before {
+  content: "Low: ";
+}
+.weather-info .low-temp i::after,
+.weather-info .high-temp i::after {
+  content: "\00B0";
+}
+.weather-info .humidity::before {
+  content: "Humidity: ";
+}
+.weather-info .humidity i::after {
+  content: "%";
+}
+.location i.city::after {
+  content: ", ";
+}
+.location i.city {
+  text-transform: capitalize;
+}
+.location i.state {
+  text-transform: uppercase;
 }

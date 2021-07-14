@@ -1,64 +1,132 @@
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>NewTab</title>
-  <meta name="description" content="Flexxxxx">
-  <meta name="author" content="SitePoint">
-  <link rel="stylesheet" href="newtab.css">
-  <meta property="og:title" content="A Basic HTML5 Template">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.sitepoint.com/a-basic-html5-template/">
-  <meta property="og:description" content="A simple HTML5 Template for new projects.">
-  <meta property="og:image" content="image.png">
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-  <script src="jquery.fittext.js"></script>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>NewTab</title>
+    <meta name="description" content="Flexxxxx" />
+    <meta name="author" content="SitePoint" />
+    <link rel="stylesheet" href="newtab.css" />
+    <meta property="og:title" content="A Basic HTML5 Template" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://www.sitepoint.com/a-basic-html5-template/"
+    />
+    <meta
+      property="og:description"
+      content="A simple HTML5 Template for new projects."
+    />
+    <meta property="og:image" content="image.png" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="jquery.fittext.js"></script>
+    <script
+      type="text/javascript"
+      src="http://maps.googleapis.com/maps/api/js?sensor=false"
+    ></script>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
 
-  <script src="newtab.js"></script>
+    <script src="newtab.js"></script>
+  </head>
 
-</head>
-
-<body>
-  <!-- your content here... -->
+  <body>
+    <!-- your content here... -->
     <div class="flex-parent">
-        <div class="flex-box time"><div class="time-align">7:53</div></div>
-        <div class="flex-box weather"><div class="weather top"><i class="material-icons">cloud</i></div><div class="weather bottom"><div class="weather-align">45</div></div></div>
-        <div class="flex-box news">
-            <div class="news top">
-                <img src="https://th.bing.com/th/id/OIP.B_zxiy3Xha7cAGjz6QGFQQHaHa?pid=ImgDet&rs=1" id="newsTop">
-                <div class="news title">Texas Democrats are on a desperate mission to stop GOP voting bills</div>
-                <div class="news description">Texas state lawmakers, enacting an intricately plotted escape, left their posts and took flight to DC to stop voting bills built on Trump's fraud lies</div>
-            </div>
-            <div class="news bottom">
-                <img src="data:image/png;base64,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" id="newsBottom">
-                <div class="news title">U.S. Officials Press Pfizer for More Evidence of Need for Booster Shot</div>
-                <div class="news description">After meeting with company representatives, officials said the decision would depend partly on data on infections in vaccinated people that cause serious disease or hospitalization.</div>
-            </div>
+      <div class="flex-box time"><div class="time-align">7:53</div></div>
+      <div class="flex-box weather">
+        <div class="weather-overview">
+          <div class="weather top"><i class="material-icons">cloud</i></div>
+          <div class="weather bottom"><div class="weather-align">45</div></div>
         </div>
-        <div class="flex-box calender">
-            <div class="calendar bell">
-                <i class="material-icons calendar bell-icon">notifications_active</i>
+        <div class="weather-info" style="display: none">
+          <div class="vertical-center">
+            <div class="location">
+              <i class="city">Your City</i><i class="state">State</i>
             </div>
-            <div class="calendar events">
-                <div class="calendar event">Event 1</div>
-                <div class="claendar event-break"></div>
-                <div class="calendar event">Event 2</div>
-            </div>
+            <div class="humidity"><i>Humidity</i></div>
+            <div class="high-temp"><i>High</i></div>
+            <div class="low-temp"><i>Low</i></div>
+          </div>
         </div>
-        <div class="flex-box spotify">
-            <iframe onload='iframestyle' src="https://open.spotify.com/embed/playlist/37i9dQZF1DWZtZ8vUCzche?theme=0" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+      </div>
+      <div class="flex-box news">
+        <div class="news top">
+          <img
+            src="https://th.bing.com/th/id/OIP.B_zxiy3Xha7cAGjz6QGFQQHaHa?pid=ImgDet&rs=1"
+            id="newsTop"
+          />
+          <div class="news title">
+            Texas Democrats are on a desperate mission to stop GOP voting bills
+          </div>
+          <div class="news description">
+            Texas state lawmakers, enacting an intricately plotted escape, left
+            their posts and took flight to DC to stop voting bills built on
+            Trump's fraud lies
+          </div>
         </div>
-        <div class="break"></div>
-        <div class="flex-box simplify-aeries">
-            <div class="simplify-aeries quick-check">
-                
-            </div>
-            <div class="simplify-aeries schedule">
-
-            </div>
+        <div class="news bottom">
+          <img
+            src="data:image/png;base64,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"
+            id="newsBottom"
+          />
+          <div class="news title">
+            U.S. Officials Press Pfizer for More Evidence of Need for Booster
+            Shot
+          </div>
+          <div class="news description">
+            After meeting with company representatives, officials said the
+            decision would depend partly on data on infections in vaccinated
+            people that cause serious disease or hospitalization.
+          </div>
         </div>
+      </div>
+      <div class="flex-box calender">
+        <div class="calendar bell">
+          <i class="material-icons calendar bell-icon">notifications_active</i>
+        </div>
+        <div class="calendar events">
+          <div class="calendar event">Event 1</div>
+          <div class="claendar event-break"></div>
+          <div class="calendar event">Event 2</div>
+        </div>
+      </div>
+      <div class="flex-box spotify">
+        <iframe
+          onload="iframestyle"
+          src="https://open.spotify.com/embed/playlist/37i9dQZF1DWZtZ8vUCzche?theme=0"
+          frameborder="0"
+          allowtransparency="true"
+          allow="encrypted-media"
+        ></iframe>
+      </div>
+      <div class="break"></div>
+      <div class="flex-box simplify-aeries">
+        <div class="simplify-aeries quick-check">
+          <div class="simplify-title">
+            <div class="title text">Quick Check Grades</div>
+            <div class="simplify list"></div>
+          </div>
+        </div>
+        <div class="simplify-aeries schedule">
+          <div class="simplify-title">
+            <div class="title text">Class Schedule</div>
+            <div class="simplify list"></div>
+          </div>
+        </div>
+      </div>
+      <div class="flex-parent">
+        <div class="flex-box tech-stories">
+          <div class="tech-stories stories">
+            <div class="tech-story">hello</div>
+            <div class="tech-story">hello</div>
+            <div class="tech-story">hello</div>
+          </div>
+        </div>
+        <div class="flex-box">test</div>
+      </div>
     </div>
-</body>
+  </body>
 </html>
