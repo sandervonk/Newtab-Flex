@@ -1,20 +1,18 @@
 {
+  "manifest_version": 2,
+  "name": "Flex Newtab",
+  "version": "0.0.1",
 
-    "manifest_version": 2,
-    "name": "Flex Newtab",
-    "version": "0.0.1",
-  
- 
-    "description": "A complete overhaul of the newtab page featuring flex widgets",
-    "content_scripts": [
-        {
-          "matches": ["https://open.spotify.com/embed/*"],
-          "all_frames": true,
-          "css": ["spotify-embed.css"]
-        }
-    ],
-    "chrome_url_overrides" : {
-        "newtab": "newtab.html"
-      }
+  "content_security_policy": "script-src 'self' https://ajax.googleapis.com; object-src 'self'",
+  "description": "A complete overhaul of the newtab page featuring flex widgets",
+  "content_scripts": [
+    {
+      "matches": ["https://open.spotify.com/embed/*"],
+      "all_frames": true,
+      "css": ["spotify-embed.css"]
+    }
+  ],
+  "chrome_url_overrides": {
+    "newtab": "newtab.html"
+  }
 }
-  

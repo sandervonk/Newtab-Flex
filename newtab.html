@@ -2,7 +2,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <title>NewTab</title>
     <meta name="description" content="Flexxxxx" />
     <meta name="author" content="SitePoint" />
@@ -18,8 +18,8 @@
       content="A simple HTML5 Template for new projects."
     />
     <meta property="og:image" content="image.png" />
+
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-    <script src="jquery.fittext.js"></script>
     <script
       type="text/javascript"
       src="http://maps.googleapis.com/maps/api/js?sensor=false"
@@ -39,12 +39,12 @@
       <div class="flex-box weather">
         <div class="weather-overview">
           <div class="weather top"><i class="material-icons">cloud</i></div>
-          <div class="weather bottom"><div class="weather-align">45</div></div>
+          <div class="weather bottom"><div class="weather-align">##</div></div>
         </div>
         <div class="weather-info" style="display: none">
           <div class="vertical-center">
             <div class="location">
-              <i class="city">Your City</i><i class="state">State</i>
+              <i class="city">BLOCKED</i><i class="state">:(</i>
             </div>
             <div class="humidity"><i>Humidity</i></div>
             <div class="high-temp"><i>High</i></div>
@@ -95,7 +95,6 @@
       </div>
       <div class="flex-box spotify">
         <iframe
-          onload="iframestyle"
           src="https://open.spotify.com/embed/playlist/37i9dQZF1DWZtZ8vUCzche?theme=0"
           frameborder="0"
           allowtransparency="true"

@@ -297,6 +297,7 @@ div.flex-parent > .flex-box {
   flex-flow: column !important;
   display: flex !important;
   flex-basis: 30rem;
+  flex-grow: 1 !important;
 }
 .flex-parent > .flex-parent > div {
   flex-basis: 100%;
@@ -304,7 +305,7 @@ div.flex-parent > .flex-box {
 .flex-box.tech-stories {
   padding: 0px !important;
   display: block !important;
-  padding-top: 1rem !important;
+  /*padding-top: 1rem !important;*/
   flex-basis: 30rem;
   flex-grow: 2 !important;
 }
@@ -316,7 +317,11 @@ div.flex-parent > .flex-box {
   text-align: left;
   padding: 1rem;
   height: 3rem;
-  line-height: 3rem;
+  /*line-height: 3rem;*/
+}
+.tech-story img.source-img {
+  padding-left: 0px !important;
+  margin-left: 0px !important;
 }
 .tech-stories.stories {
   position: relative;
@@ -332,6 +337,11 @@ div.flex-parent > .flex-box {
     max-width: unset !important;
     flex-grow: 1 !important;
     display: inline-flex;
+    padding-left: 0px !important;
+  }
+  .weather-overview {
+    padding-right: 15%;
+    padding-left: 15%;
   }
   .flex-box.weather .weather-info {
     display: inline-block !important;
@@ -343,8 +353,15 @@ div.flex-parent > .flex-box {
 .weather-info {
   height: 100%;
   border-left: lightgrey solid 0.1rem;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+  overflow: hidden;
+  /*
   padding-left: 1rem;
   margin-left: 1rem;
+  */
+  padding-left: 7%;
+  padding-right: 7%;
   text-align: left !important;
 }
 .vertical-center {
