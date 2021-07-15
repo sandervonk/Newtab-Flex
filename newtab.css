@@ -306,7 +306,7 @@ div.flex-parent > .flex-box {
   padding: 0px !important;
   display: block !important;
   /*padding-top: 1rem !important;*/
-  flex-basis: 30rem;
+  flex-basis: 30rem !important;
   flex-grow: 2 !important;
 }
 .tech-stories > .tech-story {
