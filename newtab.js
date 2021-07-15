@@ -183,7 +183,9 @@ $.ajax({
   success: function (CNNstr) {
     console.log(CNNstr);
     console.log("hello");
-    articleNum = parseInt(Math.random() * CNNstr["articles"].length - 1);
+    articleNum = parseInt(Math.random() * CNNstr["articles"].length) - 1;
+    console.log("CNN-NUM:");
+    console.log(articleNum);
     article = CNNstr["articles"][articleNum];
     title = article["title"];
     disc = article["description"];
@@ -205,7 +207,9 @@ $.ajax({
   success: function (BBCstr) {
     console.log(BBCstr);
     console.log("hello");
-    articleNum = parseInt(Math.random() * BBCstr["articles"].length - 1);
+    articleNum = parseInt(Math.random() * BBCstr["articles"].length) - 1;
+    console.log("BBC-NUM:");
+    console.log(articleNum);
     article = BBCstr["articles"][articleNum];
     title = article["title"];
     disc = article["description"];
