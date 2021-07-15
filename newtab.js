@@ -166,3 +166,17 @@ $.ajax({
     requestjQuery();
   },
 });
+//news
+var CNNurl =
+  "https://newsapi.org/v2/top-headlines?" +
+  "sources=cnn&" +
+  "apiKey=98b027db923f4a1b982f4cfc22fb6707";
+var BBCurl =
+  "https://newsapi.org/v2/top-headlines?" +
+  "sources=bbc-news&" +
+  "apiKey=98b027db923f4a1b982f4cfc22fb6707";
+
+var req = new Request(url);
+fetch(req).then(function (response) {
+  console.log(response.json());
+});
