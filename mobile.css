@@ -1,0 +1,79 @@
+@media (hover: none), (max-width: 768px), (max-device-width: 768px) {
+  .lightbox-project {
+    max-height: unset !important;
+  }
+  .flex-item > div {
+    opacity: 1;
+    background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.8));
+    z-index: 1;
+  }
+  .lightbox-project {
+    min-width: unset !important;
+    width: 100% !important;
+    height: 100% !important;
+    border: none !important;
+    border-radius: 0px !important;
+  }
+  .topImg {
+    border-radius: 0px !important;
+    padding-top: 20% !important;
+    padding-bottom: 20% !important;
+  }
+  .bottomText {
+    font-size: 1rem;
+  }
+  .picture {
+    padding: 5% !important;
+  }
+  .picture > img {
+    width: 200px;
+  }
+  .social.slot2 {
+    transform: translate(-50%, -50%) rotate(-138deg) translate(120px)
+      rotate(138deg);
+  }
+  .social.slot3 {
+    transform: translate(-50%, -50%) rotate(-170deg) translate(120px)
+      rotate(170deg);
+  }
+  body .container.cta.py-24 {
+    min-width: unset !important;
+    padding-top: 3.5rem !important;
+    height: 100%;
+  }
+  .Simplify-Container {
+    padding: 0px !important;
+    padding-top: 70px !important;
+  }
+  .w-full.px-8 {
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+  }
+  body .container.cta.py-24 .flex {
+    padding-bottom: 4rem !important;
+  }
+  .lightbox-project {
+    /*change this to ffffffaa to see bg*/
+    background: #ffffffff !important;
+  }
+  .lightbox {
+    backdrop-filter: blur(10px) brightness(90%) !important;
+  }
+  .lightbox.overlay {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  .lightbox-description {
+    text-shadow: white 0px 0px 3px;
+  }
+  .Simplify-Container {
+    position: absolute !important;
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    width: 100% !important;
+  }
+  .sidemenu {
+    overflow-y: scroll;
+    max-height: 300px;
+  }
+}
