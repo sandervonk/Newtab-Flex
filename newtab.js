@@ -176,7 +176,46 @@ var BBCurl =
   "sources=bbc-news&" +
   "apiKey=98b027db923f4a1b982f4cfc22fb6707";
 
-var req = new Request(url);
-fetch(req).then(function (response) {
-  console.log(response.json());
+$.ajax({
+  url: CNNurl,
+  jsonpCallback: "callback",
+  dataType: "json",
+  success: function (CNNstr) {
+    console.log(CNNstr);
+    console.log("hello");
+    articleNum = parseInt(Math.random() * CNNstr["articles"].length - 1);
+    article = CNNstr["articles"][articleNum];
+    title = article["title"];
+    disc = article["description"];
+    if (disc.length <= 10 || disc == undefined) {
+      disc = article["content"];
+    }
+    if (disc.length > 250) {
+      disc = disc.substr(0, 250);
+    }
+    document.getElementById("CNN-title").textContent = title;
+    document.getElementById("CNN-disc").textContent = disc;
+  },
+});
+
+$.ajax({
+  url: BBCurl,
+  jsonpCallback: "callback",
+  dataType: "json",
+  success: function (BBCstr) {
+    console.log(BBCstr);
+    console.log("hello");
+    articleNum = parseInt(Math.random() * BBCstr["articles"].length - 1);
+    article = BBCstr["articles"][articleNum];
+    title = article["title"];
+    disc = article["description"];
+    if (disc.length <= 10 || disc == undefined) {
+      disc = article["content"];
+    }
+    if (disc.length > 250) {
+      disc = disc.substr(0, 250);
+    }
+    document.getElementById("BBC-title").textContent = title;
+    document.getElementById("BBC-disc").textContent = disc;
+  },
 });
