@@ -175,6 +175,18 @@ var BBCurl =
   "https://newsapi.org/v2/top-headlines?" +
   "sources=bbc-news&" +
   "apiKey=98b027db923f4a1b982f4cfc22fb6707";
+var Engadgeturl =
+  "https://newsapi.org/v2/top-headlines?" +
+  "sources=engadget&" +
+  "apiKey=98b027db923f4a1b982f4cfc22fb6707";
+var Vergeurl =
+  "https://newsapi.org/v2/top-headlines?" +
+  "sources=the-verge&" +
+  "apiKey=98b027db923f4a1b982f4cfc22fb6707";
+var Arsurl =
+  "https://newsapi.org/v2/top-headlines?" +
+  "sources=ars-technica&" +
+  "apiKey=98b027db923f4a1b982f4cfc22fb6707";
 
 $.ajax({
   url: CNNurl,
@@ -221,5 +233,74 @@ $.ajax({
     }
     document.getElementById("BBC-title").textContent = title;
     document.getElementById("BBC-disc").textContent = disc;
+  },
+});
+$.ajax({
+  url: Engadgeturl,
+  jsonpCallback: "callback",
+  dataType: "json",
+  success: function (Engadgetstr) {
+    console.log(Engadgetstr);
+    console.log("hello");
+    articleNum = parseInt(Math.random() * Engadgetstr["articles"].length) - 1;
+    console.log("Engadget-NUM:");
+    console.log(articleNum);
+    article = Engadgetstr["articles"][articleNum];
+    title = article["title"];
+    disc = article["description"];
+    if (disc.length <= 10 || disc == undefined) {
+      disc = article["content"];
+    }
+    if (disc.length > 250) {
+      disc = disc.substr(0, 250);
+    }
+    document.getElementById("Engadget-title").textContent = title;
+    document.getElementById("Engadget-disc").textContent = disc;
+  },
+});
+$.ajax({
+  url: Vergeurl,
+  jsonpCallback: "callback",
+  dataType: "json",
+  success: function (Vergestr) {
+    console.log(Vergestr);
+    console.log("hello");
+    articleNum = parseInt(Math.random() * Vergestr["articles"].length) - 1;
+    console.log("Verge-NUM:");
+    console.log(articleNum);
+    article = Vergestr["articles"][articleNum];
+    title = article["title"];
+    disc = article["description"];
+    if (disc.length <= 10 || disc == undefined) {
+      disc = article["content"];
+    }
+    if (disc.length > 250) {
+      disc = disc.substr(0, 250);
+    }
+    document.getElementById("Verge-title").textContent = title;
+    document.getElementById("Verge-disc").textContent = disc;
+  },
+});
+$.ajax({
+  url: Arsurl,
+  jsonpCallback: "callback",
+  dataType: "json",
+  success: function (Arsstr) {
+    console.log(Arsstr);
+    console.log("hello");
+    articleNum = parseInt(Math.random() * Arsstr["articles"].length) - 1;
+    console.log("Ars-NUM:");
+    console.log(articleNum);
+    article = Arsstr["articles"][articleNum];
+    title = article["title"];
+    disc = article["description"];
+    if (disc.length <= 10 || disc == undefined) {
+      disc = article["content"];
+    }
+    if (disc.length > 250) {
+      disc = disc.substr(0, 250);
+    }
+    document.getElementById("Ars-title").textContent = title;
+    document.getElementById("Ars-disc").textContent = disc;
   },
 });

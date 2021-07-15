@@ -340,19 +340,36 @@ div.flex-parent > .flex-box {
 }
 /*end optional*/
 .tech-story.content {
-  padding-left: 5.5rem;
-  padding-top: 0.25rem;
+  padding-left: 0.5rem;
+  padding-top: 0.5rem;
+  overflow: hidden !important;
 }
+
+.tech-story .description {
+  font-size: 0.8rem;
+  padding-top: 0.3rem;
+  color: #ccc;
+  max-height: 1.7rem;
+}
+/*
+
 .tech-story .title {
   text-transform: capitalize;
+  white-space: nowrap;
+  text-align: left;
+  display: block !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
 }
+/*
 .tech-stories.stories {
-  /*
+  
   position: relative;
   top: 50%;
   transform: translateY(-50%);
-  */
+  
 }
+*/
 .tech-stories > .tech-story:last-of-type {
   border-bottom: none !important;
   margin-top: 0 !important;
