@@ -70,6 +70,20 @@ function abbrState(input, to) {
     }
   }
 }
+function shuffleArray(array) {
+  let curId = array.length;
+  // There remain elements to shuffle
+  while (0 !== curId) {
+    // Pick a remaining element
+    let randId = Math.floor(Math.random() * curId);
+    curId -= 1;
+    // Swap it with the current element.
+    let tmp = array[curId];
+    array[curId] = array[randId];
+    array[randId] = tmp;
+  }
+  return array;
+}
 var onclickFunction = function (name, fn, href) {
   return new Function(
     "return function (call) { return function " +
@@ -228,17 +242,6 @@ function getNews(tokenNumber) {
           article.title;
         document.getElementById(`disc${j}`).textContent = article.description;
         document.getElementById(`title${j}`).children[0].href = article.url;
-        /*
-        var genFunc = function name() {};
-        genFunc = onclickFunction(
-          `${article.title.replace(/[^a-z0-9]/gim, "-")}`,
-          genFunc,
-          article.url
-        );
-        document.getElementById(
-          `title${j}`
-        ).parentElement.parentElement.onclick = genFunc;
-        */
       }
     },
     error: function (response) {
@@ -260,4 +263,59 @@ function getNews(tokenNumber) {
     },
   });
 }
-getNews(0);
+
+function altNews() {
+  var settings = {
+    async: true,
+    crossDomain: true,
+    url: "https://newscatcher.p.rapidapi.com/v1/search?q=news&sort_by=date&sources=engadget.com,cnn.com,nytimes.com,arstechnica.com,theverge.com,techcrunch.com&topic=tech&lang=en&media=True",
+    method: "GET",
+    headers: {
+      "x-rapidapi-key": "dbcdb734a6msh0652ad6a4e3d952p1121c0jsnc4eba32a960f",
+      "x-rapidapi-host": "newscatcher.p.rapidapi.com",
+    },
+  };
+  random = Math.random();
+  console.log("random:");
+  console.log(random);
+  if (random >= 0.5) {
+    settings.url =
+      "https://newscatcher.p.rapidapi.com/v1/search_free?q=tech&lang=en&media=True";
+    console.log("changed url to free version");
+    console.log(settings.url);
+  } else {
+    var articlesNum = shuffleArray([0, 1, 2, 3, 4]);
+    console.log("created shuffled array?");
+  }
+
+  $.ajax(settings).done(function (response) {
+    console.log("response:");
+    console.log(response);
+    articles = response["articles"];
+    console.log("articles:");
+    console.log(articles);
+    if (settings.url.includes("search_free?q")) {
+      articlesNum = newNum(articles.length);
+    }
+
+    if (settings.url.includes("search?q")) {
+      articlesNum = shuffleArray([0, 1, 2, 3, 4]);
+    }
+    console.log(articlesNum);
+    for (let j = 1; j < 6; j++) {
+      console.log(articlesNum[j - 1]);
+      article = articles[articlesNum[j - 1]];
+      console.log(`getting article ${articlesNum[j - 1]} for slot ${j}`);
+      try {
+        console.log(["img", article.media]);
+        document.getElementById(`img${j}`).src = article.media;
+      } catch {}
+      document.getElementById(`title${j}`).children[0].textContent =
+        article.title;
+      document.getElementById(`disc${j}`).textContent = article.summary;
+      document.getElementById(`title${j}`).children[0].href = article.link;
+    }
+  });
+}
+//getNews(0);
+altNews();
