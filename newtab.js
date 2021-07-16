@@ -194,23 +194,47 @@ function newNum(len) {
   console.log(nums);
   return nums;
 }
-
-queryUrl = `https://gnews.io/api/v4/search?q=example&lang=en&token=185e38cb8cc5ca66e97868ffaec92190`;
-$.ajax({
-  url: queryUrl,
-  jsonpCallback: "callback",
-  dataType: "json",
-  success: function (response) {
-    console.log(response);
-    articles = response["articles"];
-    articlesNum = newNum(articles.length);
-    for (let j = 1; j < 6; j++) {
-      article = articles[articlesNum[j - 1]];
-      console.log(`getting article ${articlesNum[j - 1]} for slot ${j}`);
-      console.log(["img", article.image]);
-      document.getElementById(`img${j}`).src = article.image;
-      document.getElementById(`title${j}`).textContent = article.title;
-      document.getElementById(`disc${j}`).textContent = article.description;
-    }
-  },
-});
+apiToken = "185e38cb8cc5ca66e97868ffaec92190";
+tokens = [
+  "185e38cb8cc5ca66e97868ffaec92190",
+  "f136df2be140d33e4b9cc31693bb0440",
+  "4da6332b1c7946c53125d2e669bf24e8",
+];
+tokenNum = 0;
+function getNews(tokenNumber) {
+  apiToken = tokens[tokenNumber];
+  queryUrl = `https://gnews.io/api/v4/search?q=example&lang=en&token=${apiToken}`;
+  $.ajax({
+    url: queryUrl,
+    jsonpCallback: "callback",
+    dataType: "json",
+    success: function (response) {
+      console.log(response);
+      articles = response["articles"];
+      articlesNum = newNum(articles.length);
+      for (let j = 1; j < 6; j++) {
+        article = articles[articlesNum[j - 1]];
+        console.log(`getting article ${articlesNum[j - 1]} for slot ${j}`);
+        console.log(["img", article.image]);
+        document.getElementById(`img${j}`).src = article.image;
+        document.getElementById(`title${j}`).textContent = article.title;
+        document.getElementById(`disc${j}`).textContent = article.description;
+      }
+    },
+    error: function (response) {
+      if (
+        response.responseJSON["errors"][0].includes(
+          "You have reached your query limit for today"
+        )
+      ) {
+        console.log("Query Limit Error :(");
+      } else {
+        console.log("errored :( RESPONSE:");
+        console.log(response.responseJSON);
+        tokenNum += 1;
+        getNews(tokenNum);
+      }
+    },
+  });
+}
+getNews();
