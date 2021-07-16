@@ -70,6 +70,13 @@ function abbrState(input, to) {
     }
   }
 }
+var onclickFunction = function (name, fn, href) {
+  return new Function(
+    "return function (call) { return function " +
+      name +
+      ` () {  window.location.href = "${href}"  }; };`
+  )()(Function.apply.bind(fn));
+};
 function pad2(number) {
   return (number < 10 ? "0" : "") + number;
 }
@@ -217,8 +224,21 @@ function getNews(tokenNumber) {
         console.log(`getting article ${articlesNum[j - 1]} for slot ${j}`);
         console.log(["img", article.image]);
         document.getElementById(`img${j}`).src = article.image;
-        document.getElementById(`title${j}`).textContent = article.title;
+        document.getElementById(`title${j}`).children[0].textContent =
+          article.title;
         document.getElementById(`disc${j}`).textContent = article.description;
+        document.getElementById(`title${j}`).children[0].href = article.url;
+        /*
+        var genFunc = function name() {};
+        genFunc = onclickFunction(
+          `${article.title.replace(/[^a-z0-9]/gim, "-")}`,
+          genFunc,
+          article.url
+        );
+        document.getElementById(
+          `title${j}`
+        ).parentElement.parentElement.onclick = genFunc;
+        */
       }
     },
     error: function (response) {
@@ -228,13 +248,16 @@ function getNews(tokenNumber) {
         )
       ) {
         console.log("Query Limit Error :(");
+        tokenNum += 1;
+        if (tokenNum < tokens.length) {
+          console.log(`running with token number: ${tokenNum}`);
+          getNews(tokenNum);
+        }
       } else {
         console.log("errored :( RESPONSE:");
         console.log(response.responseJSON);
-        tokenNum += 1;
-        getNews(tokenNum);
       }
     },
   });
 }
-getNews();
+getNews(0);

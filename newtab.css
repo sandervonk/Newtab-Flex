@@ -299,6 +299,7 @@ div.flex-parent > .flex-box {
   flex-grow: 1 !important;
   max-width: 100% !important;
   flex-flow: row wrap !important;
+  justify-content: stretch;
 }
 .flex-parent > .flex-parent > div {
   flex-basis: 20rem !important;
@@ -311,7 +312,8 @@ div.flex-parent > .flex-box {
   display: block !important;
   /*padding-top: 1rem !important;*/
   flex-basis: 10rem !important;
-  flex-grow: 2 !important;
+  flex-grow: 1 !important;
+  height: fit-content !important;
 }
 .tech-stories > .tech-story {
   border-bottom: solid lightgrey 0.1rem;
@@ -474,4 +476,30 @@ div.flex-parent > .flex-box {
   object-fit: cover;
   width: 5rem;
   height: 5rem;
+}
+.flex-box.extra {
+  height: fit-content;
+  min-height: 7.7rem !important;
+}
+.flex-parent .flex-parent {
+  align-items: stretch;
+  justify-content: center;
+  justify-items: center;
+  justify-self: center;
+  align-content: flex-start;
+}
+.news.title a {
+  color: white !important;
+  cursor: pointer !important;
+  text-decoration: none !important;
+}
+.news.title a:hover {
+  color: rgb(0, 177, 177) !important;
+  text-decoration: underline !important;
+}
+@media (max-width: 40rem) {
+  .news.title a {
+    color: rgb(72, 255, 255) !important;
+    text-decoration: underline !important;
+  }
 }
