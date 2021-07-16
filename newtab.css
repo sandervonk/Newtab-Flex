@@ -381,12 +381,19 @@ div.flex-parent > .flex-box {
   margin-top: 0 !important;
   padding-bottom: 0.25rem !important;
 }
+
 @media (max-width: 40rem) {
   .flex-box.weather {
     max-width: unset !important;
     flex-grow: 1 !important;
     display: inline-flex;
     padding-left: 0px !important;
+  }
+  .time {
+    font-size: 6rem !important;
+  }
+  body.flex-parent {
+    width: 100% !important;
   }
   .weather-overview {
     padding-right: 15%;
@@ -397,6 +404,11 @@ div.flex-parent > .flex-box {
   }
   .simplify-title {
     font-size: 1.2rem !important;
+  }
+}
+@media (max-width: 30rem) {
+  .simplify-title {
+    font-size: 1rem !important;
   }
 }
 .weather-info {
