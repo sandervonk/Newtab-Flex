@@ -294,20 +294,23 @@ div.flex-parent > .flex-box {
   border-bottom-left-radius: 1.3rem !important;
 }
 .flex-parent > .flex-parent {
-  flex-flow: column !important;
   display: flex !important;
   flex-basis: 30rem;
   flex-grow: 1 !important;
   max-width: 100% !important;
+  flex-flow: row wrap !important;
 }
 .flex-parent > .flex-parent > div {
-  flex-basis: 100%;
+  flex-basis: 20rem !important;
+  max-width: 100% !important;
+  max-width: -webkit-fill-available !important;
+  flex-grow: 1 !important;
 }
 .flex-box.tech-stories {
   padding: 0px !important;
   display: block !important;
   /*padding-top: 1rem !important;*/
-  flex-basis: 100% !important;
+  flex-basis: 10rem !important;
   flex-grow: 2 !important;
 }
 .tech-stories > .tech-story {
