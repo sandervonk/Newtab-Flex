@@ -449,3 +449,12 @@ div.flex-parent > .flex-box {
 .location i.state {
   text-transform: uppercase;
 }
+#img1,
+#img2,
+#img3,
+#img4,
+#img5 {
+  object-fit: cover;
+  width: 5rem;
+  height: 5rem;
+}

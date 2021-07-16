@@ -167,140 +167,50 @@ $.ajax({
   },
 });
 //news
-var CNNurl =
-  "https://newsapi.org/v2/top-headlines?" +
-  "sources=cnn&" +
-  "apiKey=98b027db923f4a1b982f4cfc22fb6707";
-var BBCurl =
-  "https://newsapi.org/v2/top-headlines?" +
-  "sources=bbc-news&" +
-  "apiKey=98b027db923f4a1b982f4cfc22fb6707";
-var Engadgeturl =
-  "https://newsapi.org/v2/top-headlines?" +
-  "sources=engadget&" +
-  "apiKey=98b027db923f4a1b982f4cfc22fb6707";
-var Vergeurl =
-  "https://newsapi.org/v2/top-headlines?" +
-  "sources=the-verge&" +
-  "apiKey=98b027db923f4a1b982f4cfc22fb6707";
-var Arsurl =
-  "https://newsapi.org/v2/top-headlines?" +
-  "sources=ars-technica&" +
-  "apiKey=98b027db923f4a1b982f4cfc22fb6707";
 
-$.ajax({
-  url: CNNurl,
-  jsonpCallback: "callback",
-  dataType: "json",
-  success: function (CNNstr) {
-    console.log(CNNstr);
-    console.log("hello");
-    articleNum = parseInt(Math.random() * CNNstr["articles"].length) - 1;
-    console.log("CNN-NUM:");
-    console.log(articleNum);
-    article = CNNstr["articles"][articleNum];
-    title = article["title"];
-    disc = article["description"];
-    if (disc.length <= 10 || disc == undefined) {
-      disc = article["content"];
+sources = [
+  ["cnn.com", "CNN"],
+  ["bbc.com", "BBC"],
+  ["engadget.com", "Engadget"],
+  ["theverge.com", "Verge"],
+  ["arstechnica.com", "Ars"],
+];
+function newNum(len) {
+  nums = [];
+  for (let i = 0; i < 5; i++) {
+    newRandom = parseInt(Math.random() * len) - 1;
+    runs = 0;
+    while (nums.indexOf(newRandom) != -1 && runs <= 20) {
+      newRandom = parseInt(Math.random() * len) - 1;
+      console.log("was the same, changing");
+      runs++;
     }
-    if (disc.length > 250) {
-      disc = disc.substr(0, 250);
+    if (newRandom < 0) {
+      newRandom = 0;
     }
-    document.getElementById("CNN-title").textContent = title;
-    document.getElementById("CNN-disc").textContent = disc;
-  },
-});
+    nums.push(newRandom);
+  }
+  console.log("random things:");
+  console.log(nums);
+  return nums;
+}
 
+queryUrl = `https://gnews.io/api/v4/search?q=example&lang=en&token=185e38cb8cc5ca66e97868ffaec92190`;
 $.ajax({
-  url: BBCurl,
+  url: queryUrl,
   jsonpCallback: "callback",
   dataType: "json",
-  success: function (BBCstr) {
-    console.log(BBCstr);
-    console.log("hello");
-    articleNum = parseInt(Math.random() * BBCstr["articles"].length) - 1;
-    console.log("BBC-NUM:");
-    console.log(articleNum);
-    article = BBCstr["articles"][articleNum];
-    title = article["title"];
-    disc = article["description"];
-    if (disc.length <= 10 || disc == undefined) {
-      disc = article["content"];
+  success: function (response) {
+    console.log(response);
+    articles = response["articles"];
+    articlesNum = newNum(articles.length);
+    for (let j = 1; j < 6; j++) {
+      article = articles[articlesNum[j - 1]];
+      console.log(`getting article ${articlesNum[j - 1]} for slot ${j}`);
+      console.log(["img", article.image]);
+      document.getElementById(`img${j}`).src = article.image;
+      document.getElementById(`title${j}`).textContent = article.title;
+      document.getElementById(`disc${j}`).textContent = article.description;
     }
-    if (disc.length > 250) {
-      disc = disc.substr(0, 250);
-    }
-    document.getElementById("BBC-title").textContent = title;
-    document.getElementById("BBC-disc").textContent = disc;
-  },
-});
-$.ajax({
-  url: Engadgeturl,
-  jsonpCallback: "callback",
-  dataType: "json",
-  success: function (Engadgetstr) {
-    console.log(Engadgetstr);
-    console.log("hello");
-    articleNum = parseInt(Math.random() * Engadgetstr["articles"].length) - 1;
-    console.log("Engadget-NUM:");
-    console.log(articleNum);
-    article = Engadgetstr["articles"][articleNum];
-    title = article["title"];
-    disc = article["description"];
-    if (disc.length <= 10 || disc == undefined) {
-      disc = article["content"];
-    }
-    if (disc.length > 250) {
-      disc = disc.substr(0, 250);
-    }
-    document.getElementById("Engadget-title").textContent = title;
-    document.getElementById("Engadget-disc").textContent = disc;
-  },
-});
-$.ajax({
-  url: Vergeurl,
-  jsonpCallback: "callback",
-  dataType: "json",
-  success: function (Vergestr) {
-    console.log(Vergestr);
-    console.log("hello");
-    articleNum = parseInt(Math.random() * Vergestr["articles"].length) - 1;
-    console.log("Verge-NUM:");
-    console.log(articleNum);
-    article = Vergestr["articles"][articleNum];
-    title = article["title"];
-    disc = article["description"];
-    if (disc.length <= 10 || disc == undefined) {
-      disc = article["content"];
-    }
-    if (disc.length > 250) {
-      disc = disc.substr(0, 250);
-    }
-    document.getElementById("Verge-title").textContent = title;
-    document.getElementById("Verge-disc").textContent = disc;
-  },
-});
-$.ajax({
-  url: Arsurl,
-  jsonpCallback: "callback",
-  dataType: "json",
-  success: function (Arsstr) {
-    console.log(Arsstr);
-    console.log("hello");
-    articleNum = parseInt(Math.random() * Arsstr["articles"].length) - 1;
-    console.log("Ars-NUM:");
-    console.log(articleNum);
-    article = Arsstr["articles"][articleNum];
-    title = article["title"];
-    disc = article["description"];
-    if (disc.length <= 10 || disc == undefined) {
-      disc = article["content"];
-    }
-    if (disc.length > 250) {
-      disc = disc.substr(0, 250);
-    }
-    document.getElementById("Ars-title").textContent = title;
-    document.getElementById("Ars-disc").textContent = disc;
   },
 });
