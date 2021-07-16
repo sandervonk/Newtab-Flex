@@ -298,6 +298,7 @@ div.flex-parent > .flex-box {
   display: flex !important;
   flex-basis: 30rem;
   flex-grow: 1 !important;
+  max-width: 100% !important;
 }
 .flex-parent > .flex-parent > div {
   flex-basis: 100%;
@@ -392,6 +393,7 @@ div.flex-parent > .flex-box {
   .time {
     font-size: 6rem !important;
   }
+  body,
   body.flex-parent {
     width: 100% !important;
   }
