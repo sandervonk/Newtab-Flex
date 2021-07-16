@@ -253,8 +253,11 @@ function getNews(tokenNumber) {
         console.log("Query Limit Error :(");
         tokenNum += 1;
         if (tokenNum < tokens.length) {
-          console.log(`running with token number: ${tokenNum}`);
+          console.log(`running with token number: ${tokenNum + 1}`);
           getNews(tokenNum);
+        } else {
+          console.log("out of keys, using alt src");
+          altNews();
         }
       } else {
         console.log("errored :( RESPONSE:");
@@ -268,7 +271,7 @@ function altNews() {
   var settings = {
     async: true,
     crossDomain: true,
-    url: "https://newscatcher.p.rapidapi.com/v1/search?q=news&sort_by=date&sources=engadget.com,cnn.com,nytimes.com,arstechnica.com,theverge.com,techcrunch.com&topic=tech&lang=en&media=True",
+    url: "https://newscatcher.p.rapidapi.com/v1/search?q=news&sort_by=date&sources=engadget.com,cnn.com,nytimes.com,arstechnica.com,theverge.com,techcrunch.com&lang=en&media=True",
     method: "GET",
     headers: {
       "x-rapidapi-key": "dbcdb734a6msh0652ad6a4e3d952p1121c0jsnc4eba32a960f",
@@ -276,46 +279,52 @@ function altNews() {
     },
   };
   random = Math.random();
-  console.log("random:");
-  console.log(random);
-  if (random >= 0.5) {
+
+  if (random >= 0.8) {
     settings.url =
       "https://newscatcher.p.rapidapi.com/v1/search_free?q=tech&lang=en&media=True";
-    console.log("changed url to free version");
-    console.log(settings.url);
   } else {
     var articlesNum = shuffleArray([0, 1, 2, 3, 4]);
     console.log("created shuffled array?");
   }
 
   $.ajax(settings).done(function (response) {
-    console.log("response:");
     console.log(response);
-    articles = response["articles"];
-    console.log("articles:");
-    console.log(articles);
-    if (settings.url.includes("search_free?q")) {
-      articlesNum = newNum(articles.length);
+    if (response.message === undefined) {
+      response.message = "";
     }
+    if (response.message.includes("You have exceeded the rate")) {
+      getNews(0);
+    } else {
+      articles = response["articles"];
+      if (settings.url.includes("search_free?q")) {
+        articlesNum = newNum(articles.length);
+      }
 
-    if (settings.url.includes("search?q")) {
-      articlesNum = shuffleArray([0, 1, 2, 3, 4]);
-    }
-    console.log(articlesNum);
-    for (let j = 1; j < 6; j++) {
-      console.log(articlesNum[j - 1]);
-      article = articles[articlesNum[j - 1]];
-      console.log(`getting article ${articlesNum[j - 1]} for slot ${j}`);
-      try {
-        console.log(["img", article.media]);
-        document.getElementById(`img${j}`).src = article.media;
-      } catch {}
-      document.getElementById(`title${j}`).children[0].textContent =
-        article.title;
-      document.getElementById(`disc${j}`).textContent = article.summary;
-      document.getElementById(`title${j}`).children[0].href = article.link;
+      if (settings.url.includes("search?q")) {
+        articlesNum = shuffleArray([0, 1, 2, 3, 4]);
+      }
+      console.log(articlesNum);
+      for (let j = 1; j < 6; j++) {
+        console.log(articlesNum[j - 1]);
+        article = articles[articlesNum[j - 1]];
+        console.log(`getting article ${articlesNum[j - 1]} for slot ${j}`);
+        if (article.media != undefined) {
+          console.log(["img", article.media]);
+          document.getElementById(`img${j}`).src = article.media;
+        }
+        document.getElementById(`title${j}`).children[0].textContent =
+          article.title;
+        document.getElementById(`disc${j}`).textContent = article.summary;
+        document.getElementById(`title${j}`).children[0].href = article.link;
+      }
     }
   });
 }
-//getNews(0);
-altNews();
+if (Math.random() > 0.1) {
+  getNews(0);
+  console.log("used original src");
+} else {
+  console.log("used alt src");
+  altNews();
+}

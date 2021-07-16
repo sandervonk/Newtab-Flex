@@ -14,5 +14,6 @@
   ],
   "chrome_url_overrides": {
     "newtab": "newtab.html"
-  }
+  },
+  "permissions": ["identity", "https://www.googleapis.com/*"]
 }
